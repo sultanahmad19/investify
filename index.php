@@ -37,8 +37,8 @@
         <div class="content">
             <h2>Elevate Your Financial Portfolio.</h2>
             <p>Embark on a path to financial growth and stability by investing in the timeless asset of gold through
-                RTSGOLD. With a track record of preserving and enhancing wealth, gold is a reliable choice for investors
-                seeking long-term value. Join the RTSGOLD community today and experience the benefits of a secure and
+                Investify. With a track record of preserving and enhancing wealth, gold is a reliable choice for investors
+                seeking long-term value. Join the Investify community today and experience the benefits of a secure and
                 enduring investment. Your financial future awaits.</p>
                 <a href="register.php">
                     <button class="register-btn">Create Account</button>
@@ -90,8 +90,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -132,8 +132,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -174,8 +174,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $50,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -216,8 +216,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -260,7 +260,7 @@
                 </div>
                 <div class="col-md-6 align-self-center">
                     <h2>About Company</h2>
-                    <p>At RTS Gold, we're more than just an investment platform; we're your trusted partner in growing
+                    <p>At Investify, we're more than just an investment platform; we're your trusted partner in growing
                         your wealth. Leveraging our expertise and experience in the gold market, we utilize your
                         investments to unlock new opportunities for financial growth. Join us today and experience the
                         power of strategic gold investments that pave the way for a brighter financial future. Your
@@ -300,7 +300,7 @@
                                     </div>
                                     <div class="about__right-bottom-item-right ab">
                                         <h3>
-                                            <span class="conter">0</span> ".0k+"
+                                            <span class="conter">1</span> .9"k+"
                                         </h3>
                                         <p>Registered Users</p>
                                     </div>
@@ -313,9 +313,9 @@
                                     </div>
                                     <div class="about__right-bottom-item-right">
                                         <h3>
-                                            <span class="conter">0</span> ".0k+"
+                                            <span class="conter">2</span> .4"M+"
                                         </h3>
-                                        <p>Total Investor</p>
+                                        <p>Total Investments</p>
                                     </div>
                                 </div>
                             </div>
@@ -338,7 +338,7 @@
                             Why Choose Us?
                         </h2>
                         <p class="section-subtitle margin-0 mb-50">
-                            At RTS Gold, we offer you compelling reasons to be part of our community:
+                            At Investify, we offer you compelling reasons to be part of our community:
                         </p>
                     </div>
                 </div>
@@ -410,7 +410,7 @@
                                 <i class="fas fa-fast-forward"></i>
                             </div>
                             <h4>Fast Withdrawl</h4>
-                            <p>Enjoy the swiftest withdrawal process via JazzCash, EasyPaisa, Bank Transfer, and Crypto.
+                            <p>Enjoy the swiftest withdrawal process via Perfect Money, and Crypto wWallets.
                                 We prioritize processing withdrawals with lightning speed, because we understand that
                                 time is money.</p>
                         </div>
@@ -421,49 +421,7 @@
     </section>
 
 
-    <!-- plan selection ------ -->
-    <div class="select-plan-area section-common-bg pb-120">
-        <div class="container">
-            <div class="select-paln-wrapper">
-                <form action="mail.php" class="plan-form">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group has-icon has-icon-select mb-20">
-                                <label for="plan">Select Plan</label>
-                                <select class="form-select form--control" id="changePlan">
-                                    <option value="4" data-fixed_amount="0.00000000" data-minimum_amount="1.00000000"
-                                        data-maximum_amount="500000.00000000">7 Days</option>
-                                    <option value="3" data-fixed_amount="0.00000000" data-minimum_amount="1.00000000"
-                                        data-maximum_amount="50000.00000000">15 Days</option>
-                                    <option value="2" data-fixed_amount="0.00000000" data-minimum_amount="1.00000000"
-                                        data-maximum_amount="500000.00000000">1 Month</option>
-                                    <option value="1" data-fixed_amount="0.00000000" data-minimum_amount="1.00000000"
-                                        data-maximum_amount="500000.00000000">2 Months</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group has-icon mb-20 ">
-                                <label for="amount">Enter The Amount</label>
-                                <input type="text" class="form-control form--control invest-input" placeholder="1.00"
-                                    onkeyup="if (!window.__cfRLUnblockHandlers) return false; this.value = this.value.replace (/^\.|[^\d\.]/g, '')"
-                                    data-cf-modified-80d863d2e59a919cf5a8ad0e-="">
-                            </div>
-                        </div>
-                        <div class="col-sm-12 ">
-                            <div class="select-plan-price mb-20">
-                                <ul>
-                                    <li class="profit-input base--color">Return 1.500 USD Every Monthly For 6 Monthly. Total 9 USD+Capital</li>
-                                    <li><code class="period">Net Profit 9</code></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+    
 
     <!-- afflieate section----  -->
 
@@ -513,10 +471,8 @@
                 <div class="col-xl-7 col-lg-6 ">
                     <div class="affilite-program__right">
                         <div class="affilite-program__right-img">
-                            <img class="w-img" src="assets/templates/hyip_gold/images/program/affilate-image.png"
-                                alt="image">
-                            <img class="affilite__coin-one p-absolute"
-                                src="assets/templates/hyip_gold/images/program/coin-1.png"
+                            <img class="w-img" src="assets/templates/hyip_gold/images/program/affilate-image.png" alt="image">
+                            <img class="affilite__coin-one p-absolute" src="assets/templates/hyip_gold/images/program/coin-1.png"
                                 alt="image">
                             <img class="affilite__coin-two p-absolute"
                                 src="assets/templates/hyip_gold/images/program/coin-2.png"
@@ -623,121 +579,121 @@
                                  <tbody>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-16 12:49 PM
+                                                     2024-05-16 12:49 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.0000
+                                                     11.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-16 12:39 PM
+                                                     2024-05-16 12:39 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.0000
+                                                     21.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-16 11:24 AM
+                                                     2024-05-16 11:24 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     3.0000
+                                                     33.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     CoinPayments
+                                                                                              Crypto Wallet
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-16 10:31 AM
+                                                     2024-05-16 10:31 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     5.0000
+                                                     45.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Crypto Wallet
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-16 07:01 AM
+                                                     2024-05-16 07:01 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.0000
+                                                     10.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-15 10:48 PM
+                                                     2024-05-15 10:48 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.3000
+                                                     17.30
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-15 09:06 PM
+                                                     2024-05-15 09:06 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     5.0000
+                                                     35.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                                                              Crypto Wallet
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-15 08:35 PM
+                                                     2024-05-15 08:35 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     2.0000
+                                                     20.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-15 07:36 PM
+                                                     2024-05-15 07:36 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     5.0000
+                                                     50.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
                                                                                               <td data-label="Gatway">
-                                                     One Cash
+                                                     Perfect Money
                                                  </td>
                                                  <td data-label="date">
-                                                     2024-04-15 06:12 PM
+                                                     2024-05-15 06:12 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     10.0000
+                                                     10.00
                                                      USD
                                                  </td>
                                                                                       </tr>
@@ -753,7 +709,6 @@
                                  style="background-image: url(assets/templates/hyip_gold/images/price/price-bg.png);">
                                  <thead>
                                      <tr>
-                                         <th>Gatway</th>
                                          <th>Date</th>
                                          <th>Amount</th>
                                      </tr>
@@ -762,131 +717,111 @@
 
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-19 07:04 PM
+                                                     2024-06-19 07:04 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     36.0000
+                                                     36.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-09 04:21 PM
+                                                     2024-06-09 04:21 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     5.0000
+                                                     50.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-07 05:01 PM
+                                                     2024-06-07 05:01 PM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     196.0000
+                                                     196.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-06 11:23 AM
+                                                     2024-06-06 11:23 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     0.3450
+                                                    10.450
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-06 11:20 AM
+                                                     2024-06-06 11:20 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.0000
+                                                     10.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                         
                                                  <td data-label="date">
-                                                     2024-02-06 11:03 AM
+                                                     2024-06-06 11:03 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     3.0000
+                                                     30.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                            
                                                  <td data-label="date">
-                                                     2024-02-06 10:48 AM
+                                                     2024-06-06 10:48 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     1.0206
+                                                     10.30
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                              
                                                  <td data-label="date">
-                                                     2024-02-06 10:42 AM
+                                                     2024-06-06 10:42 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     0.3900
+                                                    10.390
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                             
                                                  <td data-label="date">
-                                                     2024-02-06 10:25 AM
+                                                     2024-06-06 10:25 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     0.9800
+                                                    10.00
                                                      USD
                                                  </td>
                                                                                       </tr>
                                                                               <tr>
 
-                                                                                              <td data-label="Gatway">
-                                                     
-                                                 </td>
+                                                                                             
                                                  <td data-label="date">
-                                                     2024-02-06 10:25 AM
+                                                     2024-06-06 10:25 AM
                                                  </td>
                                                  <td data-label="Amount">
-                                                     3.6500
+                                                     3.65
                                                      USD
                                                  </td>
                                                                                       </tr>
@@ -916,7 +851,7 @@
                         Easiest Side Income
                     </h2>
                     <p class="section-subtitle margin-0 ">
-                        Start Passive earning from now through RTS GOLD
+                        Start Passive earning from now through Investify
                     </p>
                 </div>
             </div>

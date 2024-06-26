@@ -120,14 +120,14 @@ if (isset($_SESSION['user_id'])) {
                         </a>
                     </li>
 
-                    <!-- <li class="sidebar-menu-list__item ">
+                    <li class="sidebar-menu-list__item ">
                         <a href="referrals.php" class="sidebar-menu-list__link">
                             <span class="icon">
                                 <i class="fas fa-handshake  pr-1"></i>
                             </span>
                             <span class="text">Referrals</span>
                         </a>
-                    </li> -->
+                    </li>
 
 
                     <li class="sidebar-menu-list__item ">

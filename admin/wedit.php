@@ -39,7 +39,6 @@ if (!$data) {
 <?php
 include('dbcon.php');
 
-
 $message = '';
 $message_type = '';
 
@@ -54,9 +53,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "Invalid input";
         $message_type = "danger"; // Error type
     } else {
-        // Prepare the SQL query to update the `tdeposit`
+        // Prepare the SQL query to update the `twithdraw` and subtract the amount from `tdeposit`
         $sql = "UPDATE transactions 
-                SET twithdraw = ? 
+                SET twithdraw = ?, 
+                    tdeposit = tdeposit - ? 
                 WHERE id = ?";
 
         $stmt = $conn->prepare($sql);
@@ -65,10 +65,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = "Error preparing statement: " . $conn->error;
             $message_type = "danger";
         } else {
-            $stmt->bind_param("di", $amount, $id); // Bind the parameters
+            $stmt->bind_param("ddi", $amount, $amount, $id); // Bind the parameters
 
             if ($stmt->execute()) {
-                $message = "Deposit updated successfully";
+                $message = "Withdrawal updated successfully";
                 $message_type = "success"; // Success type
 
                 // Redirect after a short delay
@@ -212,8 +212,8 @@ $conn->close(); // Close the connection
             <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($data['email']); ?>" readonly>
         </div>
         <div class="form-group">
-            <label for="amount">Add  Withdrawal:</label>
-            <input type="number" id="amount" name="amount" >
+            <label for="amount">Add Withdrawal:</label>
+            <input type="text" id="amount" name="amount" >
         </div>
         <div class="form-group">
             <input type="submit" value="Update">

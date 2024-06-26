@@ -45,7 +45,7 @@
                   <div class="row align-items-center">
                       <div class="col-9">
                           <div class="logo">
-                              <a href="https://rtsgold.com">
+                              <a href="#">
                                   <img src="images/logo.png" alt="Logo">
                               </a>
                           </div>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="col-md-6 align-self-center">
                     <h2>About Company</h2>
-                    <p>At RTS Gold, we're more than just an investment platform; we're your trusted partner in growing
+                    <p>At Investify, we're more than just an investment platform; we're your trusted partner in growing
                         your wealth. Leveraging our expertise and experience in the gold market, we utilize your
                         investments to unlock new opportunities for financial growth. Join us today and experience the
                         power of strategic gold investments that pave the way for a brighter financial future. Your
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="about__right-bottom-item-right ab">
                                         <h3>
-                                            <span class="conter">0</span> ".0k+"
+                                            <span class="conter">1</span> .9"k+"
                                         </h3>
                                         <p>Registered Users</p>
                                     </div>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="about__right-bottom-item-right">
                                         <h3>
-                                            <span class="conter">0</span> ".0k+"
+                                            <span class="conter">2</span> .4"k+"
                                         </h3>
                                         <p>Total Investor</p>
                                     </div>

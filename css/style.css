@@ -106,8 +106,7 @@ body {
     text-decoration: none;
   }
   .navbar ul li a:hover {
-    color: var(--gold);
-  }
+    color:var(--light-black);  }
   
   .login-register {
     display: flex;
@@ -610,9 +609,9 @@ ul {
     padding-right: 0;
   }
   
-  .about .col-md-6:last-child {
+  /* .about .col-md-6:last-child {
     padding-left: 0;
-  }
+  } */
   
   .about .img-fluid {
     margin-top: 6rem;
@@ -677,9 +676,7 @@ ul {
 }
   
   @media (max-width: 767px) {
-    .about .col-md-6 {
-      padding: 0;
-    }
+    
     .about .col-md-6:first-child {
       order: 2;
     }
@@ -953,7 +950,7 @@ span, sub, sup, a {
 }
 .align-items-center {
     align-items: center !important;
-    border: 1px solid var(--gold);
+    
     margin-bottom: 1rem;
 }
 .affilite-program .w-img {
@@ -1057,7 +1054,7 @@ span, sub, sup, a {
 }
 .transaction-area-wrapper .section-subtitle {
     margin-bottom: 50px;
-    margin-left: 16rem;
+    /* margin-left: 16rem; */
     font-size: 18px;
     font-weight: 500;
     max-width: 590px;
@@ -1347,6 +1344,36 @@ tr {
             top: 40rem;
             width: 3.5rem;
             right: 39%;
+            animation: tada 5s ease-in-out infinite;
+        }
+        .breadcrumb-wrapper{
+            display: none;
+        }
+      }
+    @media screen and (min-width: 460px) and (max-width: 1004px) {
+        
+        .coin-one {
+            top: 29rem;
+        right: 49%;
+            width: 3rem;
+            animation: move-tb 3s linear infinite;
+        }
+        .coin-two {
+            top: 32rem;
+            width: 2.5rem;
+            right: 41%;
+            animation: tada 5s ease-in-out infinite;
+        }
+        .coin-three {
+            top: 33.5rem;
+            width: 3.5rem;
+            right: 55%;
+            animation: tada 5s ease-in-out infinite;
+        }
+        .coin-four {
+            top: 34rem;
+            width: 3.5rem;
+            right: 44%;
             animation: tada 5s ease-in-out infinite;
         }
         .breadcrumb-wrapper{

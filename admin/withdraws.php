@@ -311,9 +311,9 @@ $conn->close(); // Close the database connection
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+    <!-- <a id="chatLink" class="support-float" href="../ticket/new">
         <img src="../assets/images/support.png" />
-    </a>
+    </a> -->
     <script type="text/javascript">
             window.onload = function() {
                 var box = document.getElementById('chatLink');

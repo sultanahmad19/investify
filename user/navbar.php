@@ -120,14 +120,22 @@ if (isset($_SESSION['user_id'])) {
                         </a>
                     </li>
 
-                    <!-- <li class="sidebar-menu-list__item ">
+                    <li class="sidebar-menu-list__item ">
                         <a href="referrals.php" class="sidebar-menu-list__link">
                             <span class="icon">
                                 <i class="fas fa-handshake  pr-1"></i>
                             </span>
                             <span class="text">Referrals</span>
                         </a>
-                    </li> -->
+                    </li>
+                    <li class="sidebar-menu-list__item ">
+                        <a href="refer.php" class="sidebar-menu-list__link">
+                            <span class="icon">
+                                <i class="fas fa-handshake  pr-1"></i>
+                            </span>
+                            <span class="text">Referral Plans</span>
+                        </a>
+                    </li>
 
 
                     <li class="sidebar-menu-list__item ">
@@ -161,12 +169,11 @@ if (isset($_SESSION['user_id'])) {
                 <li>
                     <i class="fas fa-headset"></i>
                     Support            </li>
-                <li>
-                    <a href="/cdn-cgi/l/email-protection#c7b4b2b7b7a8b5b387b5b3b4a0a8aba3e9a4a8aa">
-                        <i class="fas fa-envelope"></i>
-                        <span class="__cf_email__" data-cfemail="f2818782829d8086b2808681959d9e96dc919d9f">abc@gmail.com</span>
-                    </a>
-                </li>
+                    <li>
+                                        <a href="mailto:officialinvestify@gmail.com">
+                                        <i class="fa-solid fa-envelope"></i> officialinvestify@gmail.com
+                                        </a>
+                                    </li>
             </ul>
         </div>
 
@@ -191,27 +198,7 @@ if (isset($_SESSION['user_id'])) {
                                     <span class="name"><?php echo $name; ?></span>
                                     <span class="meta-email"><a href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a></span>
                                 </span>
-                                <span class="ms-2 fs-4 text-white">
-                                    <i class="fas fa-angle-down"></i>
-                                </span>
-                            </button>
-                            <ul class="dashboard-dropdown d-blok dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
-                                    <a class="dropdown-item" href="profile.php">
-                                        <i class="fas fa-user"></i>
-                                        Profile                                </a>
-                                </li>
-                                <!-- <li>
-                                    <a class="dropdown-item" href="change-pass.php">
-                                        <i class="fas fa-key"></i>
-                                        Password                                </a>
-                                </li> -->
-                                <li>
-                                    <a class="dropdown-item" href="logout.php">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                        Logout                                </a>
-                                </li>
-                            </ul>
+                               
                         </div>
                     </div>
                 </li>

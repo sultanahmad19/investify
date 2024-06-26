@@ -16,11 +16,11 @@ $logged_in_email = $_SESSION['email']; // Logged-in user's email
 $search = isset($_GET['search']) ? $_GET['search'] : null;
 
 // SQL query to fetch transactions based on search term
-$sql = "SELECT trx_id, name, email, tdeposit, created_at FROM transactions WHERE email = ?";
+$sql = "SELECT trx_id, name, email, amount, created_at FROM transactions WHERE email = ?";
 
 if ($search) {
     // If there's a search term, adjust the query to search in trx_id, name, or email
-    $sql = "SELECT trx_id, name, email, tdeposit, created_at 
+    $sql = "SELECT trx_id, name, email, amount, created_at 
             FROM transactions 
             WHERE email = ? 
             AND (trx_id LIKE ? OR name LIKE ? OR email LIKE ?)";
@@ -137,7 +137,7 @@ $result = $stmt->get_result();
                 echo '<td>' . htmlspecialchars($row['trx_id']) . '</td>'; // Display trx_id
                 echo '<td>' . htmlspecialchars($row['name']) . '</td>'; // Display name
                 echo '<td>' . htmlspecialchars($row['email']) . '</td>'; // Display email
-                echo '<td class="budget">' . htmlspecialchars($row['tdeposit']) . ' USD</td>'; // Display deposit
+                echo '<td class="budget">' . htmlspecialchars($row['amount']) . ' USD</td>'; // Display deposit
                 echo '<td>' . htmlspecialchars($row['created_at']) . '</td>'; // Display time
                 echo '</tr>';
             }
@@ -328,7 +328,7 @@ $conn->close(); // Close the database connection
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+<a id="chatLink" class="support-float" href="mailto:officialinvestify@gmail.com">
         <img src="../assets/images/support.png" />
     </a>
     <script type="text/javascript">
@@ -386,7 +386,7 @@ $conn->close(); // Close the database connection
                 });
             };
         </script>
-
+    
 
 
     <script type="text/javascript">
@@ -430,8 +430,7 @@ $conn->close(); // Close the database connection
 
     </script>
 
-    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
-        data-cf-settings="|49" defer></script>
-</body>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="|49" defer></script></body>
+    </body>
 
 </html>

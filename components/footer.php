@@ -49,7 +49,7 @@
                             <div class="footer-widget mb-30">
                                 <h4 class="footer-widget__title">
                                     About Us </h4>
-                                <p>RTSGold - A perfect investment platform to earn daily weekly and monthly profit.</p>
+                                <p>Investify - A perfect investment platform to earn daily weekly and monthly profit.</p>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
@@ -68,6 +68,7 @@
                                         </a>
                                     </li>
                                     <li><a href="plan.php">Plans</a></li>
+                                    <li><a href="refer.php">Referral</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -95,16 +96,16 @@
                                 <ul class="footer-widget__contact">
                                     <li>
                                         <a href="javascript:void(0)">
-                                            <i class="fas fa-map-marker-alt"></i> 232 NEW CROSS ROAD LONDON ENGLAND SE14
-                                            5PL
+                                            <i class="fas fa-map-marker-alt"></i> Josef-Lammerting-Allee 25, 50933 Köln, Germany
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void(0)">
-                                            <i class="fas fa-envelope"></i> <span class="__cf_email__">abc @gmail.com</span>
-                                                <!-- <span class="__cf_email__"
-                                                data-cfemail="12616762627d606652606661757d7e763c717d7f">[email&#160;protected]</span> -->
+                                        <a href="mailto:officialinvestify@gmail.com">
+                                        <i class="fa-solid fa-envelope"></i> officialinvestify@gmail.com
                                         </a>
+                                    </li>
+                                    <li>
+                                       
                                     </li>
                                 </ul>
                             </div>

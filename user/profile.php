@@ -1,131 +1,95 @@
-<?php 
+<?php
+// Start session
 session_start();
+
+
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    // Redirect user to login page or handle as needed
+    header("Location: login.php");
+    exit;
+}
+include('dbcon.php');
+
+
+// Get the logged-in user's email from session
+$email = $_SESSION['email'];
+
+// Prepare SQL query to fetch user data based on email
+$sql = "SELECT * FROM users WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+
+// Execute the query
+$stmt->execute();
+
+// Get result
+$result = $stmt->get_result();
+
+// Check if user exists
+if ($result->num_rows > 0) {
+    // Fetch user data
+    $user = $result->fetch_assoc();
 ?>
 <!doctype html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-
 <head>
+  
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="csrf-token" content="ZUNLa9eXrtrjuVgMzc9Gt4cyy6EFGjvcyns483VV" />
-    <title>Profile Setting | Investify</title>
-    <meta name="title" Content="RTSGold - Profile Setting">
+    <meta name="csrf-token" content="aLqZIwD1QSKytuEgW8Hr2AWLgxNiAEMrqFQaeaBJ" />
+    <title> Profile | Investify</title>
+
     
     <!-- favicon  -->
     
     <link href="../images/favicon.png" rel="icon" type="image/x-icon">
 
-
+    
     <!-- Bootstrap CSS -->
     <link href="../assets/global/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/global/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/global/css/line-awesome.min.css" />
     <!-- Plugin Link -->
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/slick.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/meanmenu.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/animated.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <link rel="stylesheet" href="../templates/hyip_gold/css/lib/slick.css">
+    <link rel="stylesheet" href="../templates/hyip_gold/css/lib/meanmenu.css">
+    <link rel="stylesheet" href="../templates/hyip_gold/css/lib/animated.css">
     <link rel="stylesheet" href="../assets/templates/hyip_gold/css/main.css">
-            <link rel="stylesheet" href="../assets/templates/hyip_gold/css/custom.css?cs">
-          
+    <link rel="stylesheet" href="../templates/hyip_gold/css/custom.css?cs">
+    <link rel="stylesheet" href="../templates/hyip_gold/css/color.php?color=be9142&secondColor=f8f58f">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/color.php?color=be9142&secondColor=f8f58f">
+
 </head>
-
 <body>
-<?php include ('navbar.php') ?>
-
-
-        <div class="body-wrapper">
-            <div class="d-flex mb-30 flex-wrap gap-3 justify-content-between align-items-center">
-    <h6 class="page-title">Profile Setting</h6>
-    </div>
-                <div class="row">
-        <div class="col-lg-12 mb-30">
-            <div class="card custom--card">
-                <div class="card-body">
-                    <h4 class="mb-2">happy</h4>
-                    <ul class="list-group">
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="las la-user base--color"></i> Username</span> <span
-                                class="fw-bold">happy</span>
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="las la-envelope base--color"></i> Email</span> <span
-                                class="fw-bold"><a class="__cf_email__" >test@mail.con</a></span>
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="las la-phone base--color"></i> Mobile</span> <span
-                                class="fw-bold">920854492321</span>
-                        </li>
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span><i class="las la-globe base--color"></i> Country</span> <span
-                                class="fw-bold">Pakistan</span>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
+    <?php include('navbar.php') ?>
+    <div class="body-wrapper">
+        <!-- HTML content here -->
+        <div class="card-body">
+            <h4 class="mb-2">User Profile</h4>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><i class="las la-user base--color"></i> Username</span>
+                    <!-- <span class="fw-bold"><?php echo $user['name']; ?></span> -->
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span><i class="las la-envelope base--color"></i> Email</span>
+                    <span class="fw-bold"><?php echo $user['email']; ?></span>
+                </li>
+                <!-- Add more list items for other user details -->
+            </ul>
         </div>
-        <!-- <div class="col-lg-8">
-            <div class="card custom--card">
-                <div class="card-body">
-                    <form class="register" action="" method="post">
-                        <input type="hidden" name="_token" value="ZUNLa9eXrtrjuVgMzc9Gt4cyy6EFGjvcyns483VV">                        <div class="row">
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">First Name</label>
-                                <input type="text" class="form-control form--control" name="firstname"
-                                    value="Sultan" required>
-                            </div>
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control form--control" name="lastname"
-                                    value="Ahmad" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">Address</label>
-                                <input type="text" class="form-control form--control" name="address"
-                                    value="">
-                            </div>
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">State</label>
-                                <input type="text" class="form-control form--control" name="state"
-                                    value="">
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">Zip Code</label>
-                                <input type="text" class="form-control form--control" name="zip"
-                                    value="">
-                            </div>
-
-                            <div class="form-group mb-3 col-sm-6">
-                                <label class="form-label">City</label>
-                                <input type="text" class="form-control form--control" name="city"
-                                    value="">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn--outline-base w-100 h-45">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div> -->
     </div>
-        </div>
-                <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../assets/global/js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    
+
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../assets/global/js/jquery-3.6.0.min.js" type="text/javascript"></script>
     <script src="../assets/global/js/bootstrap.bundle.min.js" type="text/javascript"></script>
     <script src="../assets/templates/hyip_gold/js/lib/waypoints.js" type="text/javascript"></script>
     <!-- Bootstrap 5 js -->
@@ -135,77 +99,49 @@ session_start();
     <script src="../assets/templates/hyip_gold/js/lib/counterup.js" type="text/javascript"></script>
     <script src="../assets/templates/hyip_gold/js/lib/wow.min.js" type="text/javascript"></script>
     <!-- Main js -->
-    <script src="../assets/templates/hyip_gold/js/main.js?v=1.0.0" type="text/javascript"></script>
-                <script type="text/javascript">
-            (function($) {
-                "use strict";
-                $(".langSel").on("change", function() {
-                    window.location.href = "../change/" + $(this).val();
-                });
+    
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../assets/global/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/global/js/bootstrap.bundle.min.js"></script>
+    <script src="../templates/hyip_gold/js/lib/waypoints.js"></script>
+    <!-- Bootstrap 5 js -->
+    <!-- Pluglin Link -->
+    <script src="../templates/hyip_gold/js/lib/slick.min.js"></script>
+    <script src="../templates/hyip_gold/js/lib/meanmenu.js"></script>
+    <script src="../templates/hyip_gold/js/lib/counterup.js"></script>
+    <script src="../templates/hyip_gold/js/lib/wow.min.js"></script>
+    <!-- Main js -->
+    <script src="../templates/hyip_gold/js/main.js?v=1.0.0"></script>
 
-            })(jQuery);
-        </script>
-        <script type="text/javascript">
-            (function($) {
-                "use strict";
-
-                $('form').on('submit', function() {
-                    if ($(this).valid()) {
-                        $(':submit', this).attr('disabled', 'disabled');
-                    }
-                });
-
-                var inputElements = $('[type=text],[type=password],select,textarea');
-                $.each(inputElements, function(index, element) {
-                    element = $(element);
-                    element.closest('.form-group').find('label').attr('for', element.attr('name'));
-                    element.attr('id', element.attr('name'))
-                });
-
-                $.each($('input, select, textarea'), function(i, element) {
-
-                    if (element.hasAttribute('required')) {
-                        $(element).closest('.form-group').find('label').addClass('required');
-                    }
-
-                });
-
-
-                $('.showFilterBtn').on('click', function() {
-                    $('.responsive-filter-card').slideToggle();
-                });
-
-
-                Array.from(document.querySelectorAll('table')).forEach(table => {
-                    let heading = table.querySelectorAll('thead tr th');
-                    Array.from(table.querySelectorAll('tbody tr')).forEach((row) => {
-                        Array.from(row.querySelectorAll('td')).forEach((colum, i) => {
-                            colum.setAttribute('data-label', heading[i].innerText)
-                        });
-                    });
-                });
-
-            })(jQuery);
-        </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TV512QWDND" type="text/javascript"></script>
-                <script type="text/javascript">
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag("js", new Date());
-                
-                  gtag("config", "G-TV512QWDND");
-                </script>    <link rel="stylesheet" href="../assets/global/css/iziToast.min.css">
-<script src="../assets/global/js/iziToast.min.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-    "use strict";
-    function notify(status,message) {
-        iziToast[status]({
-            message: message,
-            position: "topRight"
+    <script>
+        document.querySelector('input[name="amount"]').addEventListener('input', function() {
+            const preview = document.querySelector('.preview-details');
+            if (this.value > 0) {
+                preview.classList.remove('d-none'); // Show the section
+            } else {
+                preview.classList.add('d-none'); // Hide the section if no value or zero
+            }
         });
+    </script>
+
+<script>
+document.getElementById('depositForm').addEventListener('submit', function(event) {
+    const amountInput = document.getElementById('amount');
+    const amountError = document.getElementById('amountError');
+    
+    if (amountInput.value < 10) {
+        event.preventDefault(); // Prevent form submission
+        amountError.classList.remove('d-none'); // Show the error message
+    } else {
+        amountError.classList.add('d-none'); // Hide the error message
     }
+});
 </script>
+
+    <!-- 
+INSERT INTO `deposit` (`id`, `gateway`, `amount`, `time`) VALUES (NULL, 'essssss', '21', 'current_timestamp()');  -->
+
+
 
 
 
@@ -220,11 +156,10 @@ session_start();
 
 
     
-
-            <a id="chatLink" class="support-float" href="../ticket/new">
-            <img src="../assets/images/support.png" />
-        </a>
-        <script type="text/javascript">
+<a id="chatLink" class="support-float" href="mailto:officialinvestify@gmail.com">
+        <img src="../assets/images/support.png" />
+    </a>
+    <script type="text/javascript">
             window.onload = function() {
                 var box = document.getElementById('chatLink');
                 var isDragging = false;
@@ -279,7 +214,7 @@ session_start();
                 });
             };
         </script>
-    
+
 
 
     <script type="text/javascript">
@@ -323,6 +258,19 @@ session_start();
 
     </script>
 
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="|49" defer></script></body>
+    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="|49" defer></script>
+</body>
+
 
 </html>
+<?php
+} else {
+    // User not found
+    // Handle error or redirect as needed
+    echo "User not found.";
+}
+// Close statement and database connection
+$stmt->close();
+$conn->close();
+?>

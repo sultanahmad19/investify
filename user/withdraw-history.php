@@ -67,9 +67,10 @@ $result = $stmt->get_result(); // Get the result set
     <meta name="csrf-token" content="aLqZIwD1QSKytuEgW8Hr2AWLgxNiAEMrqFQaeaBJ" />
     <title> Withdraw History | Investify</title>
     <meta name="title" Content="RTSGold - Deposit History">
-<!-- favicon  -->
+
+    <!-- favicon  -->
     
-<link href="../images/favicon.png" rel="icon" type="image/x-icon">
+    <link href="../images/favicon.png" rel="icon" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
 
@@ -205,6 +206,7 @@ $conn->close(); // Close the database connection
     <script src="../assets/templates/hyip_gold/js/main.js?v=1.0.0"
         type="text/javascript"></script>
     <script type="text/javascript">
+        
         (function($) {
             "use strict";
             $('.detailBtn').on('click', function() {
@@ -330,8 +332,7 @@ $conn->close(); // Close the database connection
 
 
 
-
-    <a id="chatLink" class="support-float" href="../ticket/new">
+<a id="chatLink" class="support-float" href="mailto:officialinvestify@gmail.com">
         <img src="../assets/images/support.png" />
     </a>
     <script type="text/javascript">

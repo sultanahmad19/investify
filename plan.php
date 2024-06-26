@@ -98,8 +98,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -140,8 +140,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -182,8 +182,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $50,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -224,8 +224,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -248,10 +248,6 @@
                     </div>
                 </div>
 
-                <div class="price-btn">
-                                <a href="#" class="btn btn--base  investModal" >
-                                    Invest Now </a>
-                            </div>
 
 
                 

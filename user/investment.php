@@ -17,39 +17,28 @@
         content="RTSGold - A perfect investment platform to invest and earn regular profit, low investment perfect plans and highest returns per hour and weekly and monthly basis with crypto and local payment methods and withdrawal system.">
     <meta name="keywords"
         content="rtsgold,rts gold,rtsgold.com,rts gold com,rtsgold review,rtsgold reviews,rtsgold login,login rtsgold,rtsgold register,register rtsgold"> -->
-    <link rel="shortcut icon" href="../assets/images/logoIcon/favicon.png" type="image/x-icon">
-
-
-    <link rel="apple-touch-icon" href="../assets/images/logoIcon/logo.png">
-
-  
-    <meta itemprop="image" content="../assets/images/seo/657d65b08a3f51702716848.png">
+   
 
     
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+   
 
-    <link href="../assets/global/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../assets/global/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/global/css/line-awesome.min.css" />
-    <!-- Plugin Link -->
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/slick.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/meanmenu.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/lib/animated.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/main.css">
-    <link rel="stylesheet" href="../assets/templates/hyip_gold/css/custom.css?cs">
-    <link rel="stylesheet"
-        href="../assets/templates/hyip_gold/css/color.php?color=be9142&secondColor=f8f58f">
 
-    <link rel="stylesheet" href="../css/style.css">
-    
+<link rel="stylesheet" href="../css/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Plugin Link -->
+<link rel="stylesheet" href="../templates/hyip_gold/css/lib/slick.css">
+<link rel="stylesheet" href="../templates/hyip_gold/css/lib/meanmenu.css">
+<link rel="stylesheet" href="../templates/hyip_gold/css/lib/animated.css">
+<link rel="stylesheet" href="../templates/hyip_gold/css/main.css">
+<link rel="stylesheet" href="../templates/hyip_gold/css/custom.css?cs">
+<link rel="stylesheet" href="../templates/hyip_gold/css/color.php?color=be9142&secondColor=f8f58f">
 
 <style>
     .btn.btn--base.investModal{
-        left: 90%;
+        left: 50%;
     margin-top: 3rem;
 }
     
@@ -60,7 +49,7 @@
 <body>
     <!-- Overlay -->
     <div class="overlay"></div>
-    <a href="javascript::void(0)" class="scrollToTop"><i class="fab fa-chevron-up"></i></a>
+    <a href="javascript::void(0)" class="scrollToTop"><i class="fas fa-chevron-up"></i></a>
 
 
 
@@ -73,7 +62,7 @@
                             <div class="header-main-left header-main-left-header3">
                                 <div class="logo header3-logo">
                                     <a href="" class="logo-w">
-                                        <img src="../assets/images/logoIcon/logo.png" alt="logo img">
+                                        <img src="../images/logo.png" alt="logo img">
                                     </a>
                                 </div>
                             </div>
@@ -82,23 +71,28 @@
                                     <nav id="mobile-menu2">
                                         <ul>
                                             <li>
-                                                <a href="../index.php">Home</a>
+                                                <!-- <a href="../index.php">Home</a> -->
                                             </li>
                                             <li>
-                                                <a href="../about.php">
-                                                    About
-                                                </a>
+                                                <!-- <a href="../about.php"> -->
+                                                    <!-- About -->
+                                                <!-- </a> -->
                                             </li>
                                             <li>
-                                                <a href="../faq.php">
-                                                    Faq
-                                                </a>
+                                                <!-- <a href="../faq.php"> -->
+                                                    <!-- Faq -->
+                                                <!-- </a> -->
                                             </li>
                                             <li>
                                                 <a href="investment.php">Plans</a>
                                             </li>
+                                            <li>
+                                                <a href="refer.php">Refer</a>
+                                            </li>
 
-                                            <li><a href="../contact.php">Contact</a></li>
+                                            <li>
+                                                <!-- <a href="../contact.php">Contact</a> -->
+                                            </li>
                                             <li><a href="#"></a></li>
                                         </ul>
                                     </nav>
@@ -137,7 +131,7 @@
                         <div class="col-9">
                             <div class="logo">
                                 <a href="#">
-                                    <img src="../assets/images/logoIcon/logo.png" alt="Logo">
+                                    <img src="../images/logo.png" alt="Logo">
                                 </a>
                             </div>
                         </div>
@@ -148,7 +142,7 @@
                 </div>
                 <div class="mobile-menu2 d-xl-none fix"></div>
                 <div class="header-main-right-btn mb-30">
-                    <a class="btn btn--outline-base" href="../user/dashboard">Dashboard</a>
+                    <a class="btn btn--outline-base" href="dashboard.php">Dashboard</a>
                 </div>
             </div>
         </div>
@@ -213,8 +207,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -255,8 +249,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -297,8 +291,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $50,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -339,8 +333,8 @@
 
                             </h4>
                             <div class="price-table__item-content-price">
-                                <p>Min : $1.0000</p>
-                                <p>Max : $500,000.0000</p>
+                                <p>Min : $10.0</p>
+                                <p>Max : $5000</p>
                             </div>
                             <ul class="price-table__item-content-featurs">
                                 <li>
@@ -375,8 +369,121 @@
         </div>
     </section>
 
-    <?php include('../components/footer.php')?>
 
+    <footer class="footer__area ">
+        <!-- <div class="footer-inner footer__area-bg pt-120" style="background-image: url(../templates/hyip_gold/images/footer/footer-bg.png);"> -->
+        <div class="footer-inner footer__area-bg pt-120" style="background-image: url(templates/hyip_gold/images/footer/footer-bg.png);">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-top text-center pb-50">
+                        <a href="#" class="logo">
+                        <!-- <img src="../images/logo.png" alt="logo img"> -->
+                        <img src="../images/logo.png" alt="logo img">
+                        </a>
+                        <div class="footer-top__social">
+                            <ul>
+                                <li>
+                                    <a href="https://facebook.com">
+                                    <i class="fa-brands fa-facebook-f"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="https://twitter.com">
+                                    <i class="fa-brands fa-x-twitter"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.pinterest.com">
+                                        <i class="fab fa-pinterest-p"></i> </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com">
+                                    <i class="fa-brands fa-linkedin-in"></i> </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-middle pb-20">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30">
+                                <h4 class="footer-widget__title">
+                                    About Us </h4>
+                                <p>Investify - A perfect investment platform to earn daily weekly and monthly profit.</p>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30">
+                                <h4 class="footer-widget__title">
+                                    Quick Link </h4>
+                                <ul class="footer-widget__link">
+                                    <!-- <li>
+                                        <a href="../about.php">
+                                            About
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="../faq.php">
+                                            Faq
+                                        </a>
+                                    </li> -->
+                                    <li><a href="plan.php">Plans</a></li>
+                                    <li><a href="refer.php">Refer</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30">
+                                <h4 class="footer-widget__title">
+                                    Privacy & Policy </h4>
+
+                                <ul class="footer-widget__link">
+                                    <li>
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Terms and Service</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="footer-widget mb-30">
+                                <h4 class="footer-widget__title">
+                                    Contact us </h4>
+                                <ul class="footer-widget__contact">
+                                    <li>
+                                        <a href="javascript:void(0)">
+                                            <i class="fas fa-map-marker-alt"></i> Josef-Lammerting-Allee 25, 50933 Köln, Germany
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:officialinvestify@gmail.com">
+                                        <i class="fa-solid fa-envelope"></i> officialinvestify@gmail.com
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom pb-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="footer-copyright text-center">
+                                <p> Copyright © 2024 All Right Reserved. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -577,7 +684,7 @@
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+<a id="chatLink" class="support-float" href="mailto:officialinvestify@gmail.com">
         <img src="../assets/images/support.png" />
     </a>
     <script type="text/javascript">

@@ -111,7 +111,7 @@ $conn->close();
                 <select class="form--control form-select" id="gateway" name="gateway" required>
                     <option value="">Select One</option>
                     <option value="Perfect-money">Perfect Money</option>
-                    <option value="Binance">Binance</option>
+                    <option value="Crypto Wallet">Crypto Wallet</option>
                 </select>
             </div>
             <div class="form-group mb-3">
@@ -153,7 +153,18 @@ $conn->close();
 
 
 
-
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../assets/global/js/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="../assets/global/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="../assets/templates/hyip_gold/js/lib/waypoints.js" type="text/javascript"></script>
+    <!-- Bootstrap 5 js -->
+    <!-- Pluglin Link -->
+    <script src="../assets/templates/hyip_gold/js/lib/slick.min.js" type="text/javascript"></script>
+    <script src="../assets/templates/hyip_gold/js/lib/meanmenu.js" type="text/javascript"></script>
+    <script src="../assets/templates/hyip_gold/js/lib/counterup.js" type="text/javascript"></script>
+    <script src="../assets/templates/hyip_gold/js/lib/wow.min.js" type="text/javascript"></script>
+    <!-- Main js -->
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../assets/global/js/jquery-3.6.0.min.js"></script>
     <script src="../assets/global/js/bootstrap.bundle.min.js"></script>
@@ -209,68 +220,70 @@ INSERT INTO `deposit` (`id`, `gateway`, `amount`, `time`) VALUES (NULL, 'essssss
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+    
+
+<a id="chatLink" class="support-float" href="mailto:officialinvestify@gmail.com">
         <img src="../assets/images/support.png" />
     </a>
-    <script>
-        window.onload = function() {
-            var box = document.getElementById('chatLink');
-            var isDragging = false;
-            var offsetX = 0;
-            var offsetY = 0;
+    <script type="text/javascript">
+            window.onload = function() {
+                var box = document.getElementById('chatLink');
+                var isDragging = false;
+                var offsetX = 0;
+                var offsetY = 0;
 
-            // Mouse Down Event
-            box.addEventListener('mousedown', function(e) {
-                isDragging = true;
-                offsetX = e.clientX - box.getBoundingClientRect().left;
-                offsetY = e.clientY - box.getBoundingClientRect().top;
-            });
+                // Mouse Down Event
+                box.addEventListener('mousedown', function(e) {
+                    isDragging = true;
+                    offsetX = e.clientX - box.getBoundingClientRect().left;
+                    offsetY = e.clientY - box.getBoundingClientRect().top;
+                });
 
-            // Mouse Move Event
-            document.addEventListener('mousemove', function(e) {
-                if (!isDragging) return;
+                // Mouse Move Event
+                document.addEventListener('mousemove', function(e) {
+                    if (!isDragging) return;
 
-                e.preventDefault(); // Prevent selection while dragging
-                const newX = e.clientX - offsetX;
-                const newY = e.clientY - offsetY;
-                box.style.left = `${newX}px`;
-                box.style.top = `${newY}px`;
-            });
+                    e.preventDefault(); // Prevent selection while dragging
+                    const newX = e.clientX - offsetX;
+                    const newY = e.clientY - offsetY;
+                    box.style.left = `${newX}px`;
+                    box.style.top = `${newY}px`;
+                });
 
-            // Mouse Up Event
-            document.addEventListener('mouseup', function() {
-                isDragging = false;
-            });
+                // Mouse Up Event
+                document.addEventListener('mouseup', function() {
+                    isDragging = false;
+                });
 
-            // Touch Start Event
-            box.addEventListener('touchstart', function(e) {
-                var touchLocation = e.targetTouches[0];
-                offsetX = touchLocation.pageX - box.getBoundingClientRect().left;
-                offsetY = touchLocation.pageY - box.getBoundingClientRect().top;
-            });
+                // Touch Start Event
+                box.addEventListener('touchstart', function(e) {
+                    var touchLocation = e.targetTouches[0];
+                    offsetX = touchLocation.pageX - box.getBoundingClientRect().left;
+                    offsetY = touchLocation.pageY - box.getBoundingClientRect().top;
+                });
 
-            // Touch Move Event
-            box.addEventListener('touchmove', function(e) {
-                e.preventDefault(); // Prevent scrolling
-                var touchLocation = e.targetTouches[0];
-                var newX = touchLocation.pageX - offsetX;
-                var newY = touchLocation.pageY - offsetY;
-                box.style.left = newX + 'px';
-                box.style.top = newY + 'px';
-            });
+                // Touch Move Event
+                box.addEventListener('touchmove', function(e) {
+                    e.preventDefault(); // Prevent scrolling
+                    var touchLocation = e.targetTouches[0];
+                    var newX = touchLocation.pageX - offsetX;
+                    var newY = touchLocation.pageY - offsetY;
+                    box.style.left = newX + 'px';
+                    box.style.top = newY + 'px';
+                });
 
-            // Touch End Event
-            box.addEventListener('touchend', function(e) {
-                var x = parseInt(box.style.left);
-                var y = parseInt(box.style.top);
-                // Do something with the final x and y values
-            });
-        };
-    </script>
+                // Touch End Event
+                box.addEventListener('touchend', function(e) {
+                    var x = parseInt(box.style.left);
+                    var y = parseInt(box.style.top);
+                    // Do something with the final x and y values
+                });
+            };
+        </script>
 
 
 
-    <script>
+    <script type="text/javascript">
         (function($) {
             "use strict";
             $(".langSel").on("change", function() {
@@ -304,8 +317,16 @@ INSERT INTO `deposit` (`id`, `gateway`, `amount`, `time`) VALUES (NULL, 'essssss
             });
 
         })(jQuery);
+
+
+
+
+
     </script>
 
+    <script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+        data-cf-settings="|49" defer></script>
 </body>
+
 
 </html>

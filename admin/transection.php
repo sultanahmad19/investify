@@ -121,7 +121,7 @@ $result = $stmt->get_result(); // Get the result set
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Sent Amount</th>
-                                <th>Deposit</th>
+                                <th>Account Balance</th>
                                 <th> Earnings</th>
                                 <th>Withdraw</th>
                                 <th>Time</th>
@@ -190,6 +190,9 @@ $result = $stmt->get_result(); // Get the result set
 
        
     </div>
+
+
+    
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="../assets/global/js/jquery-3.6.0.min.js" type="text/javascript"></script>
@@ -336,9 +339,9 @@ $result = $stmt->get_result(); // Get the result set
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+    <!-- <a id="chatLink" class="support-float" href="../ticket/new">
         <img src="../assets/images/support.png" />
-    </a>
+    </a> -->
     <script type="text/javascript">
             window.onload = function() {
                 var box = document.getElementById('chatLink');

@@ -81,6 +81,15 @@ $email = $_SESSION['email'] ?? '';
                         </a>
                     </li>
                     <li class="sidebar-menu-list__item  ">
+                        <a href="refer.php" class="sidebar-menu-list__link">
+                            <span class="icon">
+                            <i class="fa-solid fa-money-bill"></i>
+
+                            </span>
+                            <span class="text">Referrals</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-list__item  ">
                         <a href="notification.php" class="sidebar-menu-list__link">
                             <span class="icon">
                             <i class="fa-regular fa-bell"></i>
@@ -119,17 +128,7 @@ $email = $_SESSION['email'] ?? '';
             </div>
         </div>
         <div class="nav-left">
-            <ul>
-                <li>
-                    <i class="fas fa-headset"></i>
-                    Support            </li>
-                <li>
-                    <a href="/cdn-cgi/l/email-protection#c7b4b2b7b7a8b5b387b5b3b4a0a8aba3e9a4a8aa">
-                        <i class="fas fa-envelope"></i>
-                        <span class="__cf_email__" data-cfemail="f2818782829d8086b2808681959d9e96dc919d9f">abc@gmail.com</span>
-                    </a>
-                </li>
-            </ul>
+            
         </div>
 
 
@@ -157,11 +156,11 @@ $email = $_SESSION['email'] ?? '';
                                 </span>
                             </button>
                             <ul class="dashboard-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <li>
+                                <!-- <li>
                                     <a class="dropdown-item" href="profile-setting.php">
                                         <i class="fas fa-user"></i>
                                         Profile                                </a>
-                                </li>
+                                </li> -->
                                 <!-- <li>
                                     <a class="dropdown-item" href="change-password.php">
                                         <i class="fas fa-key"></i>

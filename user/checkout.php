@@ -1,47 +1,23 @@
-
 <?php
 session_start();
-
-// Ensure there's a logged-in user and retrieve their email
-if (!isset($_SESSION['email'])) {
-    die('No logged-in user. Please login.'); // Provide an appropriate message or redirect to login
-}
-
-// Database connection details
-$host = 'localhost';
-$dbname = 'digital'; // Your database name
-$user = 'root';
-$pass = '';
-
-// Create a new mysqli connection
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-// Check for connection errors
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
-
-$usd_to_pkr_rate = 278.56; // Example conversion rate, adjust as needed
+include('dbcon.php');
 
 // Get the logged-in user's email
 $logged_in_email = $_SESSION['email'];
 
 // Fetch the latest deposit amount for the logged-in user
-$amountQuery = "SELECT amount FROM deposit WHERE email = ? ORDER BY id DESC LIMIT 1"; 
+$amountQuery = "SELECT amount FROM deposit WHERE email = ? ORDER BY id DESC "; 
 $stmt = $conn->prepare($amountQuery);
 $stmt->bind_param("s", $logged_in_email);
 $stmt->execute();
 $amountResult = $stmt->get_result();
 
 $amount = 0;
-$pkr_amount = 0;
 
 if ($amountResult->num_rows > 0) {
     $amountRow = $amountResult->fetch_assoc();
     $amount = htmlspecialchars($amountRow['amount']); // Sanitize the amount
     
-    // Convert amount from USD to PKR
-    $pkr_amount = $amount * $usd_to_pkr_rate; // Conversion to PKR
 } else {
     echo 'No deposit records found for the logged-in user.<br>';
 }
@@ -61,7 +37,7 @@ if ($userResult->num_rows > 0) {
     $name = htmlspecialchars($userRow['name']); // Sanitize the name
     $email = htmlspecialchars($userRow['email']); // Sanitize the email
 } else {
-    echo 'No user records found for the logged-in user.<br>';
+    echo 'No user records found for you.<br>';
 }
 
 // Close the database connection
@@ -69,48 +45,43 @@ $stmt->close();
 $conn->close();
 ?>
 
-
-
-
-
 <?php
-// Database connection details
-$host = 'localhost';
-$dbname = 'digital';
-$user = 'root';
-$pass = '';
+include('dbcon.php');
 
-// Create a new mysqli connection
-$conn = new mysqli($host, $user, $pass, $dbname);
+$errors = [];
 
-// Check connection
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
-
-// Ensure the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Extract form data with error handling
-    $id = isset($_POST['id']) ? $_POST['id'] : null; 
+    // Extract form data
+    // $id = isset($_POST['id']) ? $_POST['id'] : null; 
     $trx_id = isset($_POST['trx_id']) ? $_POST['trx_id'] : null;
     $method_code = isset($_POST['method_code']) ? $_POST['method_code'] : null;
     $name = isset($_POST['name']) ? $_POST['name'] : null;
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $amount = isset($_POST['amount']) ? $_POST['amount'] : null;
 
-    // Check for required fields
-    if ($id && $trx_id && $method_code && $name && $email) {
+    // Debugging: Output the received POST data
+    // echo '<pre>';
+    // print_r($_POST);
+    // echo '</pre>';
+
+    // Check for required fields and populate errors array
+    if (!$trx_id) $errors['trx_id'] = "Transaction ID is required.";
+    if (!$method_code) $errors['method_code'] = "Payment method is required.";
+    if (!$name) $errors['name'] = "Name is required.";
+    if (!$email) $errors['email'] = "Email is required.";
+    if (!$amount) $errors['amount'] = "Amount is required.";
+
+    if (empty($errors)) {
         // Prepare the SQL statement with added fields
-        $stmt = $conn->prepare("INSERT INTO transactions (id, trx_id, method_code, name, email, amount) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("iiissi", $id,  $trx_id, $method_code, $name, $email, $amount);
+        $stmt = $conn->prepare("INSERT INTO transactions (trx_id, method_code, name, email, amount) VALUES ( ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iissi",  $trx_id, $method_code, $name, $email, $amount);
 
         if ($stmt->execute()) {
-           
             echo "
                 <script>
-                    alert('Transaction recorded successfully.');
+                    alert('Transaction recorded successfully. Please wait for 24 hours!');
                     setTimeout(function() {
-                        window.location.href = 'deposit.php';
+                        window.location.href = 'dashboard.php';
                     }, 1000); 
                 </script>
             ";
@@ -121,43 +92,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Close the prepared statement
         $stmt->close();
     } else {
-        echo "Error: Required fields are missing.";
+        // echo "<div class='error'>Error: Required fields are missing.</div>";
+        // // Debugging: Output the errors
+        // echo '<pre>';
+        // print_r($errors);
+        // echo '</pre>';
     }
-} 
+}
 
 $conn->close();
 ?>
 
 
+
 <?php
-// Database connection details
-$host = 'localhost';
-$dbname = 'digital';
-$user = 'root';
-$pass = '';
+include('dbcon.php');
 
-// Create a new mysqli connection
-$conn = new mysqli($host, $user, $pass, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die('Connection failed: ' . $conn->connect_error);
-}
 
 // Ensure the request method is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Extract form data with error handling
-    $id = isset($_POST['id']) ? $_POST['id'] : null; 
+    // $id = isset($_POST['id']) ? $_POST['id'] : null; 
     $trx_id = isset($_POST['trx_id']) ? $_POST['trx_id'] : null;
     $name = isset($_POST['name']) ? $_POST['name'] : null;
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $amount = isset($_POST['amount']) ? $_POST['amount'] : null;
 
     // Check for required fields
-    if ($id && $trx_id && $method_code && $name && $email) {
+    if ( $trx_id && $method_code && $name && $email) {
         // Prepare the SQL statement with added fields
-        $stmt = $conn->prepare("INSERT INTO tdeposit (id, trx_id, name, email, tdeposit) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bind_param("iissi", $id,  $trx_id, $name, $email, $amount);
+        $stmt = $conn->prepare("INSERT INTO tdeposit (trx_id, name, email, tdeposit) VALUES ( ?, ?, ?, ?)");
+        $stmt->bind_param("issi",  $trx_id, $name, $email, $amount);
 
         if ($stmt->execute()) {
            
@@ -192,9 +157,6 @@ $conn->close();
 
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,7 +166,8 @@ $conn->close();
 
 <link rel="shortcut icon" type="image/png" href="https://www.onecashpk.com/assets/templates/basic/images/favicon.png">
 <!-- bootstrap 4  -->
-<link rel="stylesheet" href="https://www.onecashpk.com/assets/global/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 <!-- fontawesome 5  -->
 <link rel="stylesheet" href="https://www.onecashpk.com/assets/global/css/all.min.css"> 
 <!-- lineawesome font -->
@@ -226,6 +189,7 @@ $conn->close();
             }
 
             .checkout-wrapper{
+                padding: 1rem;
                 background: #0C2136 !important;
                 box-shadow: 0 0 50px #000 !important
             }
@@ -418,9 +382,50 @@ $conn->close();
                 font-weight: 300;
                 
     color: white !important;
-    font-size: 1rem !important;
+    font-size: 0.8rem !important;
 
             }
+            .copy-popup {
+            visibility: hidden;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-left: -60px;
+        }
+        
+        .copy-popup::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        
+        .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 0.5s;
+            animation: fadeIn 0.5s;
+        }
+        
+        @-webkit-keyframes fadeIn {
+            from {opacity: 0;} 
+            to {opacity: 1;}
+        }
+        
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
         </style>
     
 </head>
@@ -442,16 +447,10 @@ $conn->close();
                                                                                     <a class="p-close" href="deposit.php" class="text--base"><i
                                         class="fas fa-times"></i></a>
                             
-                            <div class="shape-two">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                                    <path fill="#000" fill-opacity="0.9"
-                                        d="M0,320L48,288C96,256,192,192,288,165.3C384,139,480,149,576,154.7C672,160,768,160,864,170.7C960,181,1056,203,1152,181.3C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                                    </path>
-                                </svg>
-                            </div>
+                           
 
                             <div class="checkout-wrapper__header text-center">
-                                <img src="../assets/images/logoIcon/logo.png" alt="image" class="form-logo mb-3">
+                                <img src="../images/logo.png" alt="image" style="width: 18rem;" class="form-logo mb-3">
 
                                 <div class="payment-list">
                                     <div class="text-left">
@@ -497,82 +496,79 @@ $conn->close();
                       
 
                             <form action="" method="POST" class="check-mail" id="gateway_form">
-    
-                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-    
-
-    <div class="row mt-2 mb-4">
-        <strong>Please send payment to one of these accounts below.</strong>
-        
-        <!-- Payment Method Options -->
-        <div class="col-md-12 mb-md-3 mb-2">
-            <div class="user-account-check text-center">
-                <!-- <input type="radio" class="form-check-input" name="method_code" id="payment0" value="1" required> -->
-                <label class="form-check-label" for="payment0">
-                    <img src="https://www.beyond2015.org/wp-content/uploads/2020/02/perfect-money-logo.png" width="22px" />
-                    Perfect Money <span>Account: U43311670</span>
-    <input type="radio" name="method_code" value="1" required> 
-
-                </label>
-            </div>
-        </div>
-
-        <div class="col-md-12 mb-md-3 mb-2">
-            <div class="user-account-check text-center">
-                <!-- <input type="radio" class="form-check-input" name="method_code" id="payment1" value="2" required> -->
-                <label class="form-check-label" for="payment1">
-                <img src="https://tse2.mm.bing.net/th?id=OIP.sCUHvV1Zz8m_U6AZb9yXvgAAAA&pid=Api&P=0&h=220" width="22px" />
-                    Binance <span>Account: TDxQFVBUZP3bz4fKM2jTC<br>8GQv1STYMDrsU</span>
-    <input type="radio" name="method_code" value="2" required> 
-
-                </label>
-            </div>
-        </div>
-
-       
-        <div class="col-md-12 mb-md-3 mb-2">
-        <div class="user-account-check  text-center">
-            <label class="form-check-label">Name:
-            <input type="text" name="name" value="<?php echo $name; ?>" readonly>
-            </label>
-        </div>
-
-            <br>
-            <div class="user-account-check  text-center">
-            <label class="form-check-label">Email:
-            <input type="email" name="email" value="<?php echo $email; ?>" readonly>
-            </label>
-        </div>
-            <br>
-            <div class="user-account-check  text-center">
-            <label class="form-check-label">Amount:
-            <input type="number" name="amount" value="<?php echo $amount ;?>" readonly>
-            </label>
-        </div>
-        </div>
-
-         <!-- Transaction ID Input -->
-         <div class="col-md-12 mb-md-3 mb-2">
-            <div class="user-account-check trx text-center">
-                <h5 style="color: #ff6347;">Please enter the Transection Id:</h5>
-                <label class="form-check-label trxid" for="trx_id">
-                    Enter trxId:
-                    
-                    <input type="number" name="trx_id" placeholder="Enter trxId:" required>
-
-                </label>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Submit Button -->
-    <div class="text-center">
-    <button type="submit" class="btn btn-next next">Submit</button>
-        
-    <!-- <button type="submit" class="btn btn-next next" id="gatewayNextBtn">Submit</button> -->
-    </div>
-    </form>
+                                    <div class="row mt-2 mb-4">
+                                        <strong>Please send payment to one of these accounts below.</strong>
+                                        <div class="col-md-12 mb-md-3 mb-2">
+                                            <div class="user-account-check text-center">
+                                                <label class="form-check-label" for="payment0">
+                                                    <img src="https://www.beyond2015.org/wp-content/uploads/2020/02/perfect-money-logo.png" width="22px" />
+                                                    Perfect Money Account: <span class="copy-text" data-clipboard="U43311670">U43311670</span>
+                                                    <input type="radio" name="method_code" value="1" >
+                                                </label>
+                                                <div class="copy-popup" id="popup0">Copied!</div>
+                                                <?php if (isset($errorMessages['method_code'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['method_code']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-md-3 mb-2">
+                                            <div class="user-account-check text-center">
+                                                <label class="form-check-label" for="payment1">
+                                                    <img src="https://tse2.mm.bing.net/th?id=OIP.sCUHvV1Zz8m_U6AZb9yXvgAAAA&pid=Api&P=0&h=220" width="22px" />
+                                                    Crypto Account: <span class="copy-text" style="font-size=:.7rem;" data-clipboard="TDxQFVBUZP3bz4fKM2jTC 8GQv1STYMDrsU">TDxQFVBUZP3bz4fKM2jTC<br>8GQv1STYMDrsU</span>
+                                                    <input type="radio" name="method_code" value="2" >
+                                                </label>
+                                                <div class="copy-popup" id="popup1">Copied!</div>
+                                                <?php if (isset($errorMessages['method_code'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['method_code']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-md-3 mb-2">
+                                            <div class="user-account-check text-center">
+                                                <label class="form-check-label">Name:
+                                                    <input type="text" name="name" value="<?php echo $name; ?>" readonly>
+                                                </label>
+                                                <?php if (isset($errorMessages['name'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['name']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <br>
+                                            <div class="user-account-check text-center">
+                                                <label class="form-check-label">Email:
+                                                    <input type="email" name="email" value="<?php echo $email; ?>" readonly>
+                                                </label>
+                                                <?php if (isset($errorMessages['email'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['email']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                            <br>
+                                            <div class="user-account-check text-center">
+                                                <label class="form-check-label">Amount:
+                                                    <input type="number" name="amount" value="<?php echo $amount; ?>" readonly>
+                                                </label>
+                                                <?php if (isset($errorMessages['amount'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['amount']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mb-md-3 mb-2">
+                                            <div class="user-account-check trx text-center">
+                                                <h5 style="color: #ff6347;">Please enter the Transaction Id:</h5>
+                                                <label class="form-check-label trxid" for="trx_id">
+                                                    Enter trxId:
+                                                    <input type="number" name="trx_id" placeholder="Enter trxId:" >
+                                                </label>
+                                                <?php if (isset($errorMessages['trx_id'])): ?>
+                                                    <div class="error"><?php echo $errorMessages['trx_id']; ?></div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-next next">Submit</button>
+                                    </div>
+                                </form>
 
 
 
@@ -581,8 +577,8 @@ $conn->close();
                 </div>
 
                 <div class="col-md-12 my-3">
-                    <p class="font-size--14px text-center powered">Powered by <a href="#"
-                            class="text--dark font-size--14px"><strong>ABC</strong></a>
+                    <!-- <p class="font-size--14px text-center powered">Powered by <a href="#"
+                            class="text--dark font-size--14px"><strong>ABC</strong></a> -->
                     </p>
                 </div>
 
@@ -599,6 +595,22 @@ $conn->close();
       
     <link rel="stylesheet" href="https://www.onecashpk.com/assets/global/css/iziToast.min.css">
 <script src="https://www.onecashpk.com/assets/global/js/iziToast.min.js"></script>
+<script>
+    document.querySelectorAll('.copy-text').forEach((element, index) => {
+        element.addEventListener('click', function() {
+            const textToCopy = element.getAttribute('data-clipboard');
+            navigator.clipboard.writeText(textToCopy).then(function() {
+                const popup = document.getElementById('popup' + index);
+                popup.classList.add('show');
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 1000);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+    });
+</script>
 
 
   </body>

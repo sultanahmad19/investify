@@ -11,11 +11,11 @@ include('dbcon.php');
 $search = isset($_GET['search']) ? $_GET['search'] : null;
 
 // SQL query to fetch all transactions
-$sql = "SELECT trx_id, name, email, tdeposit, twithdraw, created_at FROM transactions";
+$sql = "SELECT trx_id, name, email, amount, twithdraw, created_at FROM transactions";
 
 // If there's a search term, adjust the query to include a WHERE clause
 if ($search) {
-    $sql = "SELECT trx_id, name, email, tdeposit, twithdraw, created_at 
+    $sql = "SELECT trx_id, name, email, amount, twithdraw, created_at 
             FROM transactions 
             WHERE trx_id LIKE ? OR name LIKE ? OR email LIKE ?";
 }
@@ -122,7 +122,7 @@ $result = $stmt->get_result(); // Get the result set
                 echo '<td>' . htmlspecialchars($row['trx_id']) . '</td>'; // Display trx_id
                 echo '<td>' . htmlspecialchars($row['name']) . '</td>'; // Display name
                 echo '<td>' . htmlspecialchars($row['email']) . '</td>'; // Display email
-                echo '<td class="budget">' . htmlspecialchars($row['tdeposit']) . ' USD</td>'; // Display deposit
+                echo '<td class="budget">' . htmlspecialchars($row['amount']) . ' USD</td>'; // Display deposit
                 echo '<td>' . htmlspecialchars($row['created_at']) . '</td>'; // Display time
                 echo '</tr>';
             }
@@ -312,9 +312,9 @@ $conn->close(); // Close the database connection
 
 
 
-    <a id="chatLink" class="support-float" href="../ticket/new">
+    <!-- <a id="chatLink" class="support-float" href="../ticket/new">
         <img src="../assets/images/support.png" />
-    </a>
+    </a> -->
     <script type="text/javascript">
             window.onload = function() {
                 var box = document.getElementById('chatLink');

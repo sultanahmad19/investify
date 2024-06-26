@@ -7,6 +7,7 @@
     <li><a href="about.php">About</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <li><a href="plan.php">Plans</a></li>
+    <li><a href="refer.php">Refer</a></li>
     
     <li class="login-register">
       <a href="login.php" class="login-btn">Login</a>

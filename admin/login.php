@@ -1,43 +1,80 @@
-
-
-
 <?php
 session_start();
-
 include('dbcon.php');
+include('../smtp/PHPMailerAutoload.php');
 
-// Define variables to store login feedback
+function generateToken($length = 32) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $token = '';
+    for ($i = 0; $i < $length; $i++) {
+        $token .= $characters[random_int(0, strlen($characters) - 1)];
+    }
+    return $token;
+}
+
+function smtp_mailer($to, $subject, $msg) {
+    $mail = new PHPMailer(); 
+    $mail->IsSMTP(); 
+    $mail->SMTPAuth = true; 
+    $mail->SMTPSecure = 'tls'; 
+    $mail->Host = "smtp.gmail.com";
+    $mail->Port = 587; 
+    $mail->IsHTML(true);
+    $mail->CharSet = 'UTF-8';
+    //$mail->SMTPDebug = 2; 
+    $mail->Username = "officialinvestify@gmail.com";
+    $mail->Password = "gzrz fadh yyyq zfth";
+    $mail->SetFrom("officialinvestify@gmail.com");
+    $mail->Subject = $subject;
+    $mail->Body = $msg;
+    $mail->AddAddress($to);
+    $mail->SMTPOptions = array('ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => false
+    ));
+    if(!$mail->Send()) {
+        return $mail->ErrorInfo;
+    } else {
+        return 'Sent';
+    }
+}
+
 $login_feedback = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve and sanitize form data
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-    // Prepare and execute SQL query to fetch user data
     $stmt = $conn->prepare("SELECT name, email, password FROM admin WHERE email = ?");
-    
     if ($stmt) {
         $stmt->bind_param("s", $email);
-
         if ($stmt->execute()) {
-            // Fetch the result
-            $stmt->store_result(); // Store result to check if a record is found
-
+            $stmt->store_result();
             if ($stmt->num_rows > 0) {
                 $stmt->bind_result($fetched_name, $fetched_email, $hashed_password);
-                $stmt->fetch(); // Fetch the stored password hash
-
-                // Verify the password
+                $stmt->fetch();
                 if (password_verify($password, $hashed_password)) {
-                    // Password matches, set session variables to track login state
-                    $_SESSION['loggedin'] = true;
-                    $_SESSION['name'] = $fetched_name;
-                    $_SESSION['email'] = $fetched_email;
+                    $token = generateToken();
+                    $subject = "Admin Login Confirmation";
+                    $msg = "Click the following link to confirm your login and access the dashboard: http://localhost/investify/admin/admin_dashboard.php?token=$token";
+                    // $msg = "Click the following link to confirm your login and access the dashboard: https://cryptotreasuresinvest.com/admin/admin_dashboard.php?token=$token";
 
-                    // Redirect to dashboard or any other protected page
-                    header('Location: dashboard.php');
-                    exit();
+
+                    $result = smtp_mailer($email, $subject, $msg);
+                    if ($result === 'Sent') {
+                        $updateTokenQuery = "UPDATE admin SET login_token = ? WHERE email = ?";
+                        $updateTokenStmt = $conn->prepare($updateTokenQuery);
+                        $updateTokenStmt->bind_param("ss", $token, $email);
+                        $updateTokenStmt->execute();
+                        $updateTokenStmt->close();
+
+                        echo "<script>alert('Login confirmation link sent to your email.');</script>";
+                        echo "<script>setTimeout(function() { window.location.href = 'login.php'; }, 0);</script>";
+                        exit;
+                    } else {
+                        $login_feedback = "Failed to send confirmation link. Please try again later.";
+                    }
                 } else {
                     $login_feedback = 'Incorrect password.';
                 }
@@ -47,19 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $login_feedback = 'Query execution failed: ' . $stmt->error;
         }
-
-        $stmt->close(); 
+        $stmt->close();
     } else {
         $login_feedback = 'Statement preparation failed: ' . $conn->error;
     }
 }
 
-// Close the connection
 $conn->close();
 ?>
-
-
-
 
 
 
@@ -131,7 +163,9 @@ $conn->close();
                             </div>
 
                             
-                            <div class="mb-3">
+                            <div class="mb-3 text-danger">
+                    <?php echo $login_feedback; ?>
+
                             </div>
 
                         </div>
@@ -142,9 +176,12 @@ $conn->close();
                         </div>
                         
                         <br>
+                        <p class="mb-0">
+                        Go back to User login? <a href="../login.php" class="text--base">
+                                <strong>User</strong> </a>
+                        </p>
                       
                     </form>
-                    <?php echo $login_feedback; ?>
                 </div>
             </div>
         </div>
