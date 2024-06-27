@@ -8,7 +8,7 @@ include('dbcon.php');
 
 
 
-$sql = "SELECT id, name, email FROM users";
+$sql = "SELECT id, name, email, phone FROM users";
 $result = $conn->query($sql);
 
 
@@ -77,6 +77,7 @@ $result = $conn->query($sql);
                 <th>S.no</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone</th>
                 <th>Notification</th>
             </tr>
         </thead>
@@ -92,6 +93,7 @@ $result = $conn->query($sql);
                     echo "<td>" . $sno++ . "</td>";
                     echo "<td>" . htmlspecialchars($row['name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['phone']) . "</td>";
                     echo "<td>" . '<a href="notification.php"><strong>See Notification!</strong> </a>' . "</td>"; // Display the notification status
                     echo "</tr>";
                 }

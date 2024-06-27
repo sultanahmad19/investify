@@ -1,5 +1,4 @@
 
-
 <?php
 session_start();
 
@@ -12,9 +11,7 @@ if (!isset($_SESSION['email'])) {
 
 $user_email = $_SESSION['email'];
 
-
-
-// Get the user's ID and referral code
+// Get the user's ID, referral code, and referral earnings
 $user_id_query = "SELECT id, referral_code, referral_earnings FROM users WHERE email = ?";
 $stmt = $conn->prepare($user_id_query);
 if (!$stmt) {
@@ -33,6 +30,9 @@ if ($result->num_rows > 0) {
     die("User not found.");
 }
 
+// Generate the referral link
+$referral_link = "http://localhost/investify/register.php?ref=" . $referral_code;
+
 // Get the number of users referred by this user
 $query = "SELECT COUNT(*) AS referral_count FROM users WHERE referred_by = ?";
 $stmt = $conn->prepare($query);
@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     $referral_data = $result->fetch_assoc();
     $referral_count = $referral_data['referral_count'];
 } else {
-    $referral_count = 0; 
+    $referral_count = 0;
 }
 
 $stmt->close();
@@ -152,6 +152,23 @@ $conn->close();
     <link rel="stylesheet" href="../assets/templates/hyip_gold/css/custom.css?cs">
     <link rel="stylesheet" href="../assets/templates/hyip_gold/css/color.php?color=be9142&secondColor=f8f58f">
 
+    <script>
+    function copyReferralLink() {
+        const referralLinkElement = document.getElementById('referralLink');
+        const tempInput = document.createElement('input');
+        tempInput.value = referralLinkElement.innerText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        const copyButton = document.getElementById('copyButton');
+        copyButton.innerText = 'Copied';
+        setTimeout(() => {
+            copyButton.innerText = 'Copy';
+        }, 1000); // Change text back to "Copy" after 2 seconds
+    }
+</script>
 </head>
 
 <body>
@@ -191,7 +208,7 @@ $conn->close();
                 <i class="fas fa-coins"></i>
                 <p>Referral Earning</p>
                 <h4><?php echo $referral_earnings; ?> USD</h4>
-            </div>
+                </div>
             <div class="card-item-body-right">
             <form action="" method="POST">
     <input type="hidden" name="transfer_referral" value="1">
@@ -221,6 +238,22 @@ $conn->close();
             </div>
 
         
+            <div class="col-xxl-4 col-sm-6">
+    <div class="card-item">
+        <div class="card-item-body d-flex justify-content-between">
+            <div class="card-item-body-left">
+                <i class="fa-regular fa-handshake"></i>
+                <p>Referral Link</p>
+                <p id="referralLink" target="_blank"><?php echo $referral_link; ?></p>
+            </div>
+            <div class="card-item-body-right">
+                <button id="copyButton" class="btn btn--outline-base btn--back-bg btn-dashboard" onclick="copyReferralLink()">Copy</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
@@ -241,6 +274,11 @@ $conn->close();
     <!-- Main js -->
     <script src="../assets/templates/hyip_gold/js/main.js?v=1.0.0"
         type="text/javascript"></script>
+
+
+
+
+
     <script type="text/javascript">
         (function($) {
             "use strict";

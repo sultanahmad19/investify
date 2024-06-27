@@ -173,7 +173,7 @@ $conn->close();
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Referral Code (optional)</label>
-                                    <input type="text" class="form-control form--control" name="referral_code">
+                                    <input type="text" id="referral_code" class="form-control form--control" name="referral_code" placeholder="Referral Code">
                                 </div>
                             </div>
                             <div class="mb-3"></div>
@@ -191,6 +191,18 @@ $conn->close();
         </div>
     </section>
 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const referralCode = urlParams.get('ref');
+
+            if (referralCode) {
+                document.getElementById('referral_code').value = referralCode;
+            }
+        });
+    </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     <script>
         const phoneInputField = document.querySelector("#phone");
